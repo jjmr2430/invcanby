@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es" class="h-full">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Canby · Iniciar sesión</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/app.css" />
+</head>
+<body class="h-full bg-[var(--background)] text-[var(--foreground)]">
+  <main class="min-h-full grid place-items-center p-6">
+    <section class="w-full max-w-xl bg-[var(--card)] text-[var(--card-foreground)] border border-[var(--border)] rounded-[var(--radius)] shadow-[0_10px_30px_rgba(0,0,0,.06)] p-7 md:p-8">
+      <img src="../assets/logo.jpg" alt="Canby" class="mx-auto mb-2 w-40 h-auto object-contain" />
+
+      <h1 class="text-center font-bold text-2xl md:text-3xl text-[var(--primary)]">
+        Sistema de Inventario Canby
+      </h1>
+      <p class="text-center text-[var(--muted-foreground)] mt-2">
+        Ingrese sus credenciales para acceder
+      </p>
+
+      <form id="formLogin" class="mt-8 space-y-4" novalidate>
+        <label class="block space-y-1">
+          <span class="font-medium">Usuario</span>
+          <input
+            class="w-full rounded-[calc(var(--radius)-2px)] border border-[var(--border)] bg-[var(--input-background)] px-4 py-3 text-base outline-offset-1 focus:outline focus:outline-2 focus:outline-[color-mix(in_oklch,var(--primary)_35%,white)]"
+            type="text" name="usuario" placeholder="Ingrese su usuario" autocomplete="username" required />
+        </label>
+
+        <label class="block space-y-1">
+          <span class="font-medium">Contraseña</span>
+          <input
+            class="w-full rounded-[calc(var(--radius)-2px)] border border-[var(--border)] bg-[var(--input-background)] px-4 py-3 text-base outline-offset-1 focus:outline focus:outline-2 focus:outline-[color-mix(in_oklch,var(--primary)_35%,white)]"
+            type="password" name="password" placeholder="Ingrese su contraseña" autocomplete="current-password" required />
+        </label>
+
+        <button
+          class="w-full rounded-[var(--radius)] bg-[var(--primary)] text-[var(--primary-foreground)] font-bold py-3 hover:brightness-95 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-[var(--primary)]"
+          type="submit">
+          Ingresar
+        </button>
+
+        <p class="text-center text-[var(--muted-foreground)] mt-2">
+          ¿Olvidó su contraseña?
+          <a href="#" class="font-bold text-[var(--accent)] hover:underline">Recuperar contraseña</a>
+        </p>
+      </form>
+    </section>
+
+    <footer class="text-center text-sm text-[var(--muted-foreground)] mt-6">
+      © 2025 Canby. Todos los derechos reservados.
+    </footer>
+  </main>
+
+  <script src="../js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Canby · Pedidos</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/app.css" />
+
+  <!-- Header común -->
+  <script type="module">
+    import { renderHeaderTailwind } from '../js/comunes.js';
+    window.addEventListener('DOMContentLoaded', () => {
+      const placeholder = document.getElementById('app-header');
+      placeholder.outerHTML = renderHeaderTailwind({
+        titulo: 'Sistema de Inventario - Canby',
+        subtitulo: 'Gestión de pedidos'
+      });
+    });
+  </script>
+</head>
+<body class="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
+  <div id="app-header"></div>
+
+  <main class="mx-auto max-w-7xl px-4 sm:px-6 py-6">
+    <!-- Título / Acciones -->
+    <section class="mb-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+      <div>
+        <h2 class="text-2xl font-bold text-slate-900">Pedidos</h2>
+        <p class="text-slate-600 mt-1">Crea y controla los pedidos de clientes</p>
+      </div>
+      <div class="flex gap-3">
+        <button id="btnNuevoPedido" class="rounded-[10px] bg-[var(--primary)] text-white font-bold px-5 py-3">
+          Nuevo pedido
+        </button>
+      </div>
+    </section>
+
+    <!-- Filtros -->
+    <section class="rounded-2xl bg-white border border-[var(--border)] p-6 mb-6">
+      <div class="grid gap-3 md:grid-cols-4">
+        <input id="filtroTexto" class="rounded-[10px] bg-[var(--input-background)] border border-[var(--border)] px-4 py-3"
+               placeholder="Buscar por Nº, cliente..." />
+        <select id="filtroEstado" class="rounded-[10px] bg-[var(--input-background)] border border-[var(--border)] px-4 py-3">
+          <option value="all">Todos los estados</option>
+          <option value="pendiente">Pendiente</option>
+          <option value="procesando">Procesando</option>
+          <option value="completado">Completado</option>
+          <option value="anulado">Anulado</option>
+        </select>
+        <input id="filtroDesde" type="date" class="rounded-[10px] bg-[var(--input-background)] border border-[var(--border)] px-4 py-3" />
+        <input id="filtroHasta" type="date" class="rounded-[10px] bg-[var(--input-background)] border border-[var(--border)] px-4 py-3" />
+      </div>
+    </section>
+
+    <!-- Tabla -->
+    <section class="rounded-2xl bg-white border border-[var(--border)]">
+      <div class="px-6 py-4 border-b">
+        <h3 class="text-lg font-semibold text-slate-900">Listado de pedidos</h3>
+        <p id="resumenTabla" class="text-sm text-slate-500"></p>
+      </div>
+
+      <div class="overflow-auto">
+        <table class="min-w-full text-left">
+          <thead class="bg-slate-50 text-slate-600">
+            <tr class="text-sm">
+              <th class="px-4 py-3">Nº</th>
+              <th class="px-4 py-3">Fecha</th>
+              <th class="px-4 py-3">Cliente</th>
+              <th class="px-4 py-3">Estado</th>
+              <th class="px-4 py-3">Total</th>
+              <th class="px-4 py-3"></th>
+            </tr>
+          </thead>
+          <tbody id="tbodyPedidos" class="text-slate-800 text-sm bg-white"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal de pedido (crear/editar) -->
+  <dialog id="dlgPedido" class="rounded-2xl border border-[var(--border)] p-0 w-[95%] max-w-2xl">
+    <form id="frmPedido" method="dialog" class="p-6 bg-white">
+      <h3 id="dlgTitulo" class="text-lg font-semibold text-slate-900 mb-4">Nuevo pedido</h3>
+
+      <div class="grid gap-3 md:grid-cols-3">
+        <input name="numero" required class="md:col-span-1 rounded-[10px] bg-[var(--input-background)] border border-[var(--border)] px-4 py-3" placeholder="Nº pedido" />
+        <input name="fecha" type="date" required class="md:col-span-1 rounded-[10px] bg-[var(--input-background)] border border-[var(--border)] px-4 py-3" />
+        <select name="estado" class="md:col-span-1 rounded-[10px] bg-[var(--input-background)] border border-[var(--border)] px-4 py-3">
+          <option value="pendiente">Pendiente</option>
+          <option value="procesando">Procesando</option>
+          <option value="completado">Completado</option>
+          <option value="anulado">Anulado</option>
+        </select>
+        <input name="cliente" required class="md:col-span-2 rounded-[10px] bg-[var(--input-background)] border border-[var(--border)] px-4 py-3" placeholder="Cliente" />
+        <input name="total" type="number" min="0" step="1" required class="md:col-span-1 rounded-[10px] bg-[var(--input-background)] border border-[var(--border)] px-4 py-3" placeholder="Total" />
+      </div>
+
+      <div class="mt-5 flex items-center justify-end gap-2">
+        <button type="button" id="btnCerrarDlg" class="rounded-[10px] border border-[var(--border)] px-4 py-2 bg-white hover:bg-slate-50">Cancelar</button>
+        <button id="btnGuardar" class="rounded-[10px] bg-[var(--primary)] text-white font-bold px-4 py-2">Guardar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="../js/pedidos.js"></script>
+</body>
+</html>

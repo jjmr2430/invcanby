@@ -1,0 +1,46 @@
+:root{
+  --font-size: 16px;
+
+  
+  --background: #F5F5F5;      
+  --foreground: #1a1a1a;
+
+  --card: #ffffff;
+  --card-foreground: #1a1a1a;
+
+  --primary: #0D47A1;           
+  --primary-foreground: #ffffff;
+
+  --secondary: #f8f9fa;
+  --secondary-foreground: #1a1a1a;
+
+  --muted: #f8f9fa;
+  --muted-foreground: #6c757d;
+
+  --accent: #FFC107;            
+  --accent-foreground: #1a1a1a;
+
+  --destructive: #d4183d;
+  --destructive-foreground: #ffffff;
+
+  --border: rgba(0, 0, 0, 0.1);
+  --input-background: #f3f3f5;
+
+  --radius: 10px;            
+}
+
+
+.dark{
+  --background: #0f0f11;
+  --foreground: #fafafa;
+  --card: #111215;
+  --card-foreground: #fafafa;
+  --primary: #e7e7ea;
+  --primary-foreground: #1a1a1a;
+  --accent: #ffd24d;
+  --accent-foreground: #1a1a1a;
+  --border: #22242a;
+  --input-background: #1a1c22;
+}
+
+html{ font-size: var(--font-size); }
