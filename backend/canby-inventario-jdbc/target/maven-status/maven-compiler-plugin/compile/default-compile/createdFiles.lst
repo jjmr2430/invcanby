@@ -1,6 +1,0 @@
-com\canby\inventario\app\Main.class
-com\canby\inventario\dao\ProductoDao.class
-com\canby\inventario\config\DbConfig.class
-com\canby\inventario\App.class
-com\canby\inventario\model\Producto.class
-com\canby\inventario\config\DbConnection.class
